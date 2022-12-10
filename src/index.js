@@ -8,6 +8,6 @@ router.get("/", (req, res) => {
 });
 
 app.use(router);
-app.listen(3333, () => {
-    console.log(path.join("rodando....."))
+app.listen(process.env.PORT || 3333, "0.0.0.0", () => {
+    console.log("rodando.....")
 });

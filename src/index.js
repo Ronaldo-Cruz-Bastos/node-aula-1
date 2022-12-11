@@ -7,6 +7,17 @@ const router = express.Router();
 router.get("/", (req, res) => {
     res.sendFile(path.join(__dirname + "/pages/home.html"));
 });
+
+router.get("/chromium", (req, res) => {
+    const chromium = require('chromium');
+    const { execFile } = require('child_process');
+
+    execFile(chromium.path, ['https://google.com'], err => {
+        console.log('Hello Google!');
+    });
+    res.sendFile(path.join(__dirname + "/pages/home.html"));
+});
+
 router.get("/:username", async(req, res) => {
     const response = await bot(req);
     res.write('<html><head></head><body>');
